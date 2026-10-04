@@ -3,8 +3,7 @@
 /**
  * A set of functions called "actions" for `pay`
  */
-const stripe = require("stripe")(
-  'sk_test_51K1UuwInlOA9yNcKhhJ9R63oMhrBJ3ucC7PZma10K5AGProYC5Od9K6UgOFguueke8ivvdj35bMy9GmCAtlxj7IX00bqT2bbnN');
+const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 module.exports = {
   payment: async (
     ctx,
