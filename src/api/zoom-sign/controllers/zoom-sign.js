@@ -30,8 +30,8 @@ module.exports = {
       }
 
 
-      ctx.body = generateSignature("f0r8F-zARRyMbNTJGUxNkg",
-                                   "0OwZyoL6ICzaZ3WCKFNlHyArewsYmY17WqBl",
+      ctx.body = generateSignature(process.env.ZOOM_SDK_KEY,
+                                   process.env.ZOOM_SDK_SECRET,
                                    94569876993,
                                    1);
       console.log(ctx.body)
