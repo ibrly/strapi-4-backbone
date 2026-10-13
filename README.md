@@ -30,6 +30,20 @@ npm run build
 npm start               # or: pm2 start ecosystem.config.js
 ```
 
+## Zoom sign
+
+`POST /api/zoomsign` with `{"meetingNumber": 123456789, "role": 0}` returns `{"signature": "..."}` for the Zoom Web SDK.
+
+- `meetingNumber`: the 9 to 11 digit meeting number, as a number or a string
+- `role`: `0` attendee (the default) or `1` host. Host needs a signed-in user (send the JWT), otherwise the endpoint answers 403.
+- Bad input gets a 400. Missing `ZOOM_SDK_KEY` / `ZOOM_SDK_SECRET` gets a 500.
+
+## Tests
+
+```bash
+npm test   # Node 18+, runs without a database
+```
+
 ## Environment variables
 
 See [.env.example](.env.example). Stripe (`STRIPE_SECRET_KEY`), Zoom (`ZOOM_SDK_KEY`, `ZOOM_SDK_SECRET`) and SendGrid (`SENDGRID_API_KEY`) keys are read from the environment and must never be committed.
