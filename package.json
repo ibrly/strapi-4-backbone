@@ -8,7 +8,7 @@
     "start": "strapi start",
     "build": "strapi build",
     "strapi": "strapi",
-    "test": "node test/zoom-sign.test.js"
+    "test": "node test/zoom-sign.test.js && node test/pay.test.js"
   },
   "devDependencies": {
     "socket.io": "^4.4.0"
