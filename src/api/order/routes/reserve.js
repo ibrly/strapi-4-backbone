@@ -8,14 +8,6 @@ module.exports = {
         policies   : [],
         middlewares: [],
       },
-    },{
-      method : 'POST',
-      path   : '/at',
-      handler: 'pay.jwt',
-      config : {
-        policies   : [],
-        middlewares: [],
-      },
     },
   ],
 };
