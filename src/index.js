@@ -18,7 +18,11 @@ module.exports = {
    * run jobs, or perform some special logic.
    */
   bootstrap({strapi}) {
-
+    // Without an origin the cors middleware sends no CORS headers at all, so
+    // browsers block the frontend's cross-origin Socket.io requests.
+    if (!process.env.SOCKET_FRONT_ORIGIN) {
+      strapi.log.warn('SOCKET_FRONT_ORIGIN is not set; browsers will block Socket.io connections');
+    }
 
     const io = require('socket.io')(
       strapi.server.httpServer,
