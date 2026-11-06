@@ -37,7 +37,6 @@ module.exports = {
           function (socket) {
             socket.on('meetupsChanged',
                       (res) => {
-                        console.log('changed')
                         socket.broadcast.emit("fresh",
                                               {})
                       })
