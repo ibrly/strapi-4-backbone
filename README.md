@@ -1,17 +1,21 @@
 # strapi-4-backbone
 
-A Strapi v4 backend backbone on MySQL with users and permissions, i18n, SendGrid email, Stripe payments, Zoom Web SDK signatures, a custom Socket.io plugin for real-time chat, and generated API documentation.
+A Strapi v4 backend backbone on MySQL with users and permissions, i18n, SendGrid email, Stripe payments, Zoom Web SDK signatures, a Socket.io server for live meetup updates, and generated API documentation.
 
 ## Content APIs
 
 | API | Path | Purpose |
 |-----|------|---------|
 | Meetups | [src/api/meetup](src/api/meetup) | CRUD for meetups |
-| Messages | [src/api/message](src/api/message) | chat messages, pushed live through the socket plugin |
+| Messages | [src/api/message](src/api/message) | chat messages (REST only) |
 | Orders | [src/api/order](src/api/order) | orders and a Stripe payment action |
 | Zoom sign | [src/api/zoom-sign](src/api/zoom-sign) | signs Zoom Web SDK join requests |
 
-Plugins and extensions live in [src/plugins/socket](src/plugins/socket) and [src/extensions](src/extensions) (users-permissions, email, upload, documentation).
+Extensions live in [src/extensions](src/extensions) (users-permissions, email, upload, documentation). [src/plugins/socket](src/plugins/socket) is still an empty plugin scaffold.
+
+## Real-time updates
+
+`bootstrap` in [src/index.js](src/index.js) starts a Socket.io server on the Strapi HTTP server. A client that emits `meetupsChanged` makes every other client receive `fresh`, so they can refetch meetups. Set `SOCKET_FRONT_ORIGIN` to the frontend's origin; without it browsers block the connection.
 
 ## Getting started
 
